@@ -23,3 +23,10 @@ User.create!(name: "Test",
                  password: password,
                  password_confirmation: password)
 end
+
+# Notes for users.
+users = User.order(:created_at).take(6)
+50.times do
+    content = Faker::Lorem.sentence(word_count: 5)
+    users.each { |user| user.notes.create!(content: content) }
+end
